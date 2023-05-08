@@ -69,6 +69,21 @@ const Paramedics = () => {
             url: url_t,
             method: "GET"
         }).then(res => {
+            if(res.data==="Hospital do not have that person's data"){
+                let example = {}
+                for (var i = 0; i < value.length; i++) {
+                    if(res.data[value[i]]){
+                    example[value[i]]=res.data[value[i]]
+                    }else{
+                        example[value[i]]="Hospital do not have that person's data"
+                    }
+                }
+                console.log(example)
+                setdata(example)
+                setvalue(true)
+                }
+            else
+            {
             let example = {}
             for (var i = 0; i < value.length; i++) {
                 if(res.data[value[i]]){
@@ -77,9 +92,10 @@ const Paramedics = () => {
                     example[value[i]]="User doesn't allowed to share the data"
                 }
             }
-                console.log(example)
+            console.log(example)
             setdata(example)
             setvalue(true)
+        }
         })
         setPersonName(
             // On autofill we get a stringified value.
