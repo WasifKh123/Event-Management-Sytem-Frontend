@@ -74,10 +74,10 @@ const MinistryofHealth = () => {
                 if(res.data[value[i]]){
                 example[value[i]]=res.data[value[i]]
                 }else{
-                    example[value[i]]="User don't allowed to share the data"
+                    example[value[i]]="User doesn't allowed to share the data"
                 }
             }
-                console.log(example)
+            console.log(example)
             setdata(example)
             setvalue(true)
         })

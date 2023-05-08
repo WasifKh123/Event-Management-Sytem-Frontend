@@ -69,8 +69,16 @@ const Paramedics = () => {
             url: url_t,
             method: "GET"
         }).then(res => {
-            console.log(res.data)
-            setdata(res.data)
+            let example = {}
+            for (var i = 0; i < value.length; i++) {
+                if(res.data[value[i]]){
+                example[value[i]]=res.data[value[i]]
+                }else{
+                    example[value[i]]="User doesn't allowed to share the data"
+                }
+            }
+                console.log(example)
+            setdata(example)
             setvalue(true)
         })
         setPersonName(
