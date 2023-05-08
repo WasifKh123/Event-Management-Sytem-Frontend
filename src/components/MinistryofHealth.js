@@ -61,6 +61,7 @@ const MinistryofHealth = () => {
             target: { value },
         } = event;
         url += ssn;
+        console.log(value)
         for (var i = 0; i < value.length; i++) {
             url += "&attributes=" + value[i];
         }
@@ -68,8 +69,16 @@ const MinistryofHealth = () => {
             url: url,
             method: "GET"
         }).then(res => {
-            console.log(res.data)
-            setdata(res.data)
+            let example = {}
+            for (var i = 0; i < value.length; i++) {
+                if(res.data[value[i]]){
+                example[value[i]]=res.data[value[i]]
+                }else{
+                    example[value[i]]="User don't allowed to share the data"
+                }
+            }
+                console.log(example)
+            setdata(example)
             setvalue(true)
         })
         setPersonName(
@@ -131,7 +140,15 @@ const MinistryofHealth = () => {
                                             <>
                                                 <Form.Label style={mystyle}>{val}:{data[val] ? data[val] : <>
                                                     <>
-                                                        <FidgetSpinner />
+                                                        <FidgetSpinner 
+                                                          visible={true}
+                                                          height="80"
+                                                          width="80"
+                                                          ariaLabel="dna-loading"
+                                                          wrapperStyle={{}}
+                                                          wrapperClass="dna-wrapper"
+                                                          ballColors={['#ff0000', '#00ff00', '#0000ff']}
+                                                          backgroundColor="#F4442E"/>
                                                     </>
 
                                                 </>}</Form.Label>

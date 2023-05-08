@@ -70,8 +70,11 @@ function Image(props) {
             method: "GET",
             responseType: "blob"
         }).then(res => {
-            console.log(res)
+            
             fileDownload(res.data, "PDGC.png")
+            toast.success("Downloading Graph",{
+             autoClose:2000   
+            })
         })
     }
     function PDGW() {
@@ -82,6 +85,10 @@ function Image(props) {
         }).then(res => {
             console.log(res)
             fileDownload(res.data, "PDGW.html")
+            toast.success("Downloading Graph",{
+                autoClose:2000   
+               });
+   
         })
     }
     function PDGH() {
@@ -92,6 +99,10 @@ function Image(props) {
         }).then(res => {
             console.log(res)
             fileDownload(res.data, "PDGH.html")
+            toast.success("Downloading Graph",{
+                autoClose:2000   
+               })
+   
         })
     }
     function PDGD() {
@@ -102,6 +113,10 @@ function Image(props) {
         }).then(res => {
             console.log(res)
             fileDownload(res.data, "PDGD.pdf")
+            toast.success("Downloading Graph",{
+                autoClose:2000   
+               })
+   
         })
     }
     function PDGE() {
@@ -112,6 +127,10 @@ function Image(props) {
         }).then(res => {
             console.log(res)
             fileDownload(res.data, "PDGE.pdf")
+            toast.success("Downloading Graph",{
+                autoClose:2000   
+               })
+   
         })
     }
     function PDGA() {
@@ -122,6 +141,10 @@ function Image(props) {
         }).then(res => {
             console.log(res)
             fileDownload(res.data, "PDGA.pdf")
+            toast.success("Downloading Graph",{
+                autoClose:2000   
+               })
+   
         })
     }
     function BREACH() {
@@ -132,6 +155,10 @@ function Image(props) {
         }).then(res => {
             console.log(res)
             fileDownload(res.data, "BREACH.pdf")
+            toast.success("Downloading Graph",{
+                autoClose:2000   
+               })
+   
         })
     }
 
