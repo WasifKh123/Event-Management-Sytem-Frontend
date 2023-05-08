@@ -11,6 +11,16 @@ max-width: 100%;
 min-height: 300px;
 `;
 
+export const InnerContainer = styled.div`
+background-color: #EEEEEE;
+border-radius: 10px;
+box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+position: relative;
+overflow: hidden;
+width: 100%;
+max-width: 100%;
+`;
+
 export const SignUpContainer = styled.div`
  position: absolute;
  top: 0;
@@ -43,8 +53,8 @@ ${props => (props.signinIn !== true ? `transform: translateX(100%);` : null)}
 export const Form = styled.form`
 background-color: #fff;
 display: flex;
-align-items: center;
-justify-content: center;
+align-items: left;
+justify-content: flex-start;
 flex-direction: column;
 padding: 0 50px;
 height: 100%;
