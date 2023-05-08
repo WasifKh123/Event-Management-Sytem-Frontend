@@ -16,6 +16,7 @@ import Select from '@mui/material/Select';
 import Chip from '@mui/material/Chip';
 import axios from 'axios';
 import { fontSize } from '@mui/system';
+import { FidgetSpinner } from 'react-loader-spinner';
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -27,10 +28,10 @@ const MenuProps = {
     },
 };
 const mystyle = {
-  
+
     fontFamily: "Arial",
-    fontSize:"30px"
-  };
+    fontSize: "30px"
+};
 
 const names = [
     'name', 'dob', 'city', 'province', 'gender', 'email', 'phone',
@@ -53,9 +54,9 @@ const Paramedics = () => {
     const theme = useTheme();
     const [personName, setPersonName] = React.useState([]);
     const [data, setdata] = React.useState();
-    const [value,setvalue]=React.useState(false);
+    const [value, setvalue] = React.useState(false);
     const url = "http://127.0.0.1:8000/pm/requestMOHForData/?ssn="
-      function handleChange(event){
+    function handleChange(event) {
         const {
             target: { value },
         } = event;
@@ -64,7 +65,7 @@ const Paramedics = () => {
         for (var i = 0; i < value.length; i++) {
             url_t += "&attributes=" + value[i];
         }
-         Axios({
+        Axios({
             url: url_t,
             method: "GET"
         }).then(res => {
@@ -76,7 +77,7 @@ const Paramedics = () => {
             // On autofill we get a stringified value.
             typeof value === 'string' ? value.split(',') : value,
         );
-        
+
     };
     return (
         <div>
@@ -127,13 +128,18 @@ const Paramedics = () => {
                                     {
                                         personName.map(val => (
                                             <>
-                                                <Form.Label style={mystyle}>{val}:{data[val] ? data[val] : "No Data" }</Form.Label>
+                                                <Form.Label style={mystyle}>{val}:{data[val] ? data[val] : <>
+                                                    <>
+                                                        <FidgetSpinner />
+                                                    </>
+
+                                                </>}</Form.Label>
                                             </>
                                         ))
                                     }
                                 </>
-                                :<>
-                                </>
+                                    : <>
+                                    </>
                             }
                         </Components.Form>
                     </Components.Container>

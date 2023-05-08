@@ -14,6 +14,9 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Chip from '@mui/material/Chip';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import axios from 'axios';
 import { fontSize } from '@mui/system';
 const ITEM_HEIGHT = 48;
@@ -27,13 +30,13 @@ const MenuProps = {
     },
 };
 const mystyle = {
-  
+
     fontFamily: "Arial",
-    fontSize:"30px"
-  };
+    fontSize: "30px"
+};
 
 const names = [
-    'hospital','diagnosis','prescriptions','treatments',
+    'hospital', 'diagnosis', 'prescriptions', 'treatments',
 ];
 
 function getStyles(name, personName, theme) {
@@ -53,8 +56,10 @@ function Image(props) {
     const url_4 = "http://127.0.0.1:8000/datadetails/personal/eXdataReport/?ssn="
     const url_5 = "http://127.0.0.1:8000/datadetails/personal/eHdataReport/?ssn="
     const url_6 = "http://127.0.0.1:8000/datadetails/personal/ireport/?id="
-    const url_7 ="http://127.0.0.1:8000/datadetails/personal/databreach/?id="
-    const [url_t,seturl]=React.useState(url_7);
+    const url_7 = "http://127.0.0.1:8000/datadetails/personal/databreach/?id="
+    const url_8 = "http://127.0.0.1:8000/datadetails/personal/deletehospitaldata/?ssn="
+
+    const [url_t, seturl] = React.useState(url_7);
     const [ssn, setssn] = useState("")
     const [id, setid] = useState("")
     const theme = useTheme();
@@ -119,7 +124,7 @@ function Image(props) {
             fileDownload(res.data, "PDGA.pdf")
         })
     }
-    function BREACH(){
+    function BREACH() {
         Axios({
             url: url_7 + id + url_t,
             method: "GET",
@@ -129,11 +134,27 @@ function Image(props) {
             fileDownload(res.data, "BREACH.pdf")
         })
     }
-    function handleChange(event){
+
+    function DELETE() {
+        Axios({
+            url: url_8 + ssn,
+            method: "GET",
+        }).then(res => {
+            toast.success(res.data, {
+                autoClose: 2000
+            });
+            console.log(res + "sadkalsdjalsjdlajsldjlajsldjalsjdl")
+        }).catch(e => toast.error(e, {
+            autoClose: 2000
+        })
+        )
+    }
+
+    function handleChange(event) {
         const {
             target: { value },
         } = event;
-        var url_new="";
+        var url_new = "";
         for (var i = 0; i < value.length; i++) {
             url_new += "&departments=" + value[i];
         }
@@ -147,8 +168,8 @@ function Image(props) {
     }
     return (
         <div style={{
-            height:"100%",
-            width:"100%",
+            height: "100%",
+            width: "100%",
             backgroundImage: `url("https://securiti.ai/wp-content/uploads/2022/09/people-data-graph-hero-2.webp")`
         }}>
             <Header />
@@ -206,11 +227,14 @@ function Image(props) {
                             <Button onClick={PDGA} variant="outline-dark">All data with in hospital</Button>
                             <br />
                             <Button onClick={BREACH} variant="outline-dark">Data Breaching Report</Button>
+                            <br />
+                            <Button onClick={DELETE} variant="outline-dark">Delete user's Data through out the system</Button>
 
                         </Components.Form>
                     </Components.Container>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 }
