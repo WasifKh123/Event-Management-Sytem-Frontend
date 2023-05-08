@@ -239,7 +239,7 @@ export default function Policy() {
                             </div>
                             <div className='col-2'>
                                 <Button variant="outlined" onClick={onSubmit} size="small" style={{ position: "relative", right: "10px", top: "14px" }}>
-                                    Search
+                                    UPDATE
                                 </Button>
                             </div>
                         </div>
