@@ -127,7 +127,7 @@ const Paramedics = () => {
                                     {
                                         personName.map(val => (
                                             <>
-                                                <Form.Label style={mystyle}>{val}:{data[val]}</Form.Label>
+                                                <Form.Label style={mystyle}>{val}:{data[val] ? data[val] : "No Data" }</Form.Label>
                                             </>
                                         ))
                                     }

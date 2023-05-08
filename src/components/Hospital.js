@@ -118,7 +118,7 @@ const Hospital = () => {
                                             value={name}
                                             style={getStyles(name, personName, theme)}
                                         >
-                                            {name}
+                                            {name}sdasda
                                         </MenuItem>
                                     ))}
                                 </Select>
@@ -129,7 +129,7 @@ const Hospital = () => {
                                     {
                                         personName.map(val => (
                                             <>
-                                                <Form.Label style={mystyle}>{val}:{data[val]}</Form.Label>
+                                                <Form.Label style={mystyle}>{val}:{data[val] }</Form.Label>
                                             </>
                                         ))
                                     }

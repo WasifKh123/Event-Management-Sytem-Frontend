@@ -11,6 +11,7 @@ function Header(props) {
                         <Nav.Link href="/hospital">Hospital</Nav.Link>
                         <Nav.Link href="/ministry">Ministry Of Health</Nav.Link>
                         <Nav.Link href="/paramedics">Paramedics</Nav.Link>
+                        <Nav.Link href="/policy">Set Policy</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>
