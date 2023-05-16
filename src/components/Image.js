@@ -19,6 +19,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import axios from 'axios';
 import { fontSize } from '@mui/system';
+import { json } from 'react-router-dom';
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -70,12 +71,15 @@ function Image(props) {
             method: "GET",
             responseType: "blob"
         }).then(res => {
-            
+
             fileDownload(res.data, "PDGC.png")
-            toast.success("Downloading Graph",{
-             autoClose:2000   
+            toast.success("Downloading Graph", {
+                autoClose: 2000
             })
+        }).catch(e => toast.error("Hospital Do not contain that person's data", {
+            autoClose: 2000
         })
+        )
     }
     function PDGW() {
         Axios({
@@ -85,11 +89,14 @@ function Image(props) {
         }).then(res => {
             console.log(res)
             fileDownload(res.data, "PDGW.html")
-            toast.success("Downloading Graph",{
-                autoClose:2000   
-               });
-   
+            toast.success("Downloading Graph", {
+                autoClose: 2000
+            });
+
+        }).catch(e => toast.error("Hospital Do not contain that person's data", {
+            autoClose: 2000
         })
+        )
     }
     function PDGH() {
         Axios({
@@ -99,11 +106,14 @@ function Image(props) {
         }).then(res => {
             console.log(res)
             fileDownload(res.data, "PDGH.html")
-            toast.success("Downloading Graph",{
-                autoClose:2000   
-               })
-   
+            toast.success("Downloading Graph", {
+                autoClose: 2000
+            })
+
+        }).catch(e => toast.error("Hospital Do not contain that person's data", {
+            autoClose: 2000
         })
+        )
     }
     function PDGD() {
         Axios({
@@ -113,11 +123,14 @@ function Image(props) {
         }).then(res => {
             console.log(res)
             fileDownload(res.data, "PDGD.pdf")
-            toast.success("Downloading Graph",{
-                autoClose:2000   
-               })
-   
+            toast.success("Downloading Graph", {
+                autoClose: 2000
+            })
+
+        }).catch(e => toast.error("Hospital Do not contain that person's data", {
+            autoClose: 2000
         })
+        )
     }
     function PDGE() {
         Axios({
@@ -127,11 +140,17 @@ function Image(props) {
         }).then(res => {
             console.log(res)
             fileDownload(res.data, "PDGE.pdf")
-            toast.success("Downloading Graph",{
-                autoClose:2000   
-               })
-   
-        })
+            toast.success("Downloading Graph", {
+                autoClose: 2000
+            })
+
+        }).catch(error => {
+            console.log("hello i am +"+JSON.stringify(error .response))
+            toast.error("Hospital Do not contain that person's data", {
+                autoClose: 2000
+            })
+        }
+        )
     }
     function PDGA() {
         Axios({
@@ -141,11 +160,14 @@ function Image(props) {
         }).then(res => {
             console.log(res)
             fileDownload(res.data, "PDGA.pdf")
-            toast.success("Downloading Graph",{
-                autoClose:2000   
-               })
-   
+            toast.success("Downloading Graph", {
+                autoClose: 2000
+            })
+
+        }).catch(e => toast.error("Hospital Do not contain that person's data", {
+            autoClose: 2000
         })
+        )
     }
     function BREACH() {
         Axios({
@@ -155,11 +177,14 @@ function Image(props) {
         }).then(res => {
             console.log(res)
             fileDownload(res.data, "BREACH.pdf")
-            toast.success("Downloading Graph",{
-                autoClose:2000   
-               })
-   
+            toast.success("Downloading Graph", {
+                autoClose: 2000
+            })
+
+        }).catch(e => toast.error("Hospital Do not contain that person's data", {
+            autoClose: 2000
         })
+        )
     }
 
     function DELETE() {
@@ -171,7 +196,7 @@ function Image(props) {
                 autoClose: 2000
             });
             console.log(res + "sadkalsdjalsjdlajsldjlajsldjalsjdl")
-        }).catch(e => toast.error(e, {
+        }).catch(e => toast.error("Hospital Do not contain that person's data", {
             autoClose: 2000
         })
         )
