@@ -144,11 +144,17 @@ function Image(props) {
                 autoClose: 2000
             })
 
-        }).catch(error => {
-            console.log("hello i am +"+JSON.stringify(error .response))
+        }).catch(e => {
+            if (e.response.status==401){
+                console.log("jellaosdkaoskdo")
             toast.error("Hospital Do not contain that person's data", {
                 autoClose: 2000
             })
+        }else if(e.response.status==402){
+            toast.error('This subjects data is not shared with anyone', {
+                autoClose: 2000
+            })
+        }
         }
         )
     }
@@ -181,9 +187,12 @@ function Image(props) {
                 autoClose: 2000
             })
 
-        }).catch(e => toast.error("Hospital Do not contain that person's data", {
-            autoClose: 2000
-        })
+        }).catch(e => {
+
+            toast.error("Hospital Do not contain that person's data", {
+                autoClose: 2000
+            })
+        }
         )
     }
 
